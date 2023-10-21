@@ -27,6 +27,7 @@ pipeline {
                 }
             }
         }
+    }
 
     post {
         // Clean after build
@@ -34,5 +35,4 @@ pipeline {
             cleanWs()
         }
     }
-}
 }
