@@ -9,6 +9,16 @@ pipeline {
         TAG = "${TIMESTAMP}-v${BUILD_NUMBER}"
     }
     stages {
+        stage('SonarQube Scan') {
+            steps {
+              script {
+              def scannerHome = tool 'sonarqube-scanner'
+              withSonarQubeEnv('sonarqube-server') {
+              sh "${scannerHome}/bin/sonar-scanner"
+                }
+              }
+            }
+        }
         stage ('Define TAG') {
             steps {
                 script {
